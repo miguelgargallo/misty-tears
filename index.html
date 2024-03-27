@@ -1,230 +1,348 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Informe de Inversi&oacute;n en Cartas Pok&eacute;mon&colon; Misty&apos;s Tears - An&aacute;lisis de Trainer vs DK</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Informe de Inversi&oacute;n en Cartas Pok&eacute;mon&colon; Misty&apos;s Tears - An&aacute;lisis de Trainer vs
+    DK</title>
+  <style>
+    /* From extension vscode.github */
+    /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
+    .vscode-dark img[src$=\#gh-light-mode-only],
+    .vscode-light img[src$=\#gh-dark-mode-only],
+    .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+    .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+  <style>
+    .task-list-item {
+      list-style-type: none;
+    }
 
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
+    .task-list-item-checkbox {
+      margin-left: -20px;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+  </style>
+  <style>
+    :root {
+      --color-note: #0969da;
+      --color-tip: #1a7f37;
+      --color-warning: #9a6700;
+      --color-severe: #bc4c00;
+      --color-caution: #d1242f;
+      --color-important: #8250df;
+    }
+  </style>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-note: #2f81f7;
+        --color-tip: #3fb950;
+        --color-warning: #d29922;
+        --color-severe: #db6d28;
+        --color-caution: #f85149;
+        --color-important: #a371f7;
+      }
+    }
+  </style>
+  <style>
+    .markdown-alert {
+      padding: 0.5rem 1rem;
+      margin-bottom: 16px;
+      color: inherit;
+      border-left: .25em solid #888;
+    }
 
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
+    .markdown-alert>:first-child {
+      margin-top: 0
+    }
 
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
+    .markdown-alert>:last-child {
+      margin-bottom: 0
+    }
 
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
+    .markdown-alert .markdown-alert-title {
+      display: flex;
+      font-weight: 500;
+      align-items: center;
+      line-height: 1
+    }
 
-.markdown-alert>:first-child {
-  margin-top: 0
-}
+    .markdown-alert .markdown-alert-title .octicon {
+      margin-right: 0.5rem;
+      display: inline-block;
+      overflow: visible !important;
+      vertical-align: text-bottom;
+      fill: currentColor;
+    }
 
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
+    .markdown-alert.markdown-alert-note {
+      border-left-color: var(--color-note);
+    }
 
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
+    .markdown-alert.markdown-alert-note .markdown-alert-title {
+      color: var(--color-note);
+    }
 
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
+    .markdown-alert.markdown-alert-important {
+      border-left-color: var(--color-important);
+    }
 
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
+    .markdown-alert.markdown-alert-important .markdown-alert-title {
+      color: var(--color-important);
+    }
 
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
+    .markdown-alert.markdown-alert-warning {
+      border-left-color: var(--color-warning);
+    }
 
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
+    .markdown-alert.markdown-alert-warning .markdown-alert-title {
+      color: var(--color-warning);
+    }
 
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
+    .markdown-alert.markdown-alert-tip {
+      border-left-color: var(--color-tip);
+    }
 
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
+    .markdown-alert.markdown-alert-tip .markdown-alert-title {
+      color: var(--color-tip);
+    }
 
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
+    .markdown-alert.markdown-alert-caution {
+      border-left-color: var(--color-caution);
+    }
 
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
+    .markdown-alert.markdown-alert-caution .markdown-alert-title {
+      color: var(--color-caution);
+    }
+  </style>
 
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
+</head>
 
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
+<body class="vscode-body vscode-light">
+  <h1 id="informe-de-inversión-en-cartas-pokémon-mistys-tears---análisis-de-trainer-vs-dk">Informe de Inversión en
+    Cartas Pokémon: Misty's Tears - Análisis de Trainer vs DK</h1>
+  <h1 id="tabla-de-contenidos">Tabla de Contenidos</h1>
+  <ul>
+    <li><a
+        href="#informe-de-inversi%C3%B3n-en-cartas-pok%C3%A9mon-mistys-tears---an%C3%A1lisis-de-trainer-vs-dk">Informe
+        de Inversión en Cartas Pokémon: Misty's Tears - Análisis de Trainer vs DK</a></li>
+    <li><a href="#tabla-de-contenidos">Tabla de Contenidos</a>
+      <ul>
+        <li><a href="#preliminary-report-on-pok%C3%A9mon-cards-investment-mistys-tears-edition">Preliminary Report on
+            Pokémon Cards Investment: Misty's Tears Edition</a></li>
+        <li><a href="#an%C3%A1lisis-general">Análisis General</a></li>
+        <li><a href="#evaluaci%C3%B3n-de-tendencias-temporales">Evaluación de Tendencias Temporales</a></li>
+        <li><a href="#m%C3%A1ximos-y-m%C3%ADnimos">Máximos y Mínimos</a></li>
+        <li><a href="#fluctuaciones-estacionales">Fluctuaciones Estacionales</a>
+          <ul>
+            <li><a href="#an%C3%A1lisis-de-correlaci%C3%B3n-y-valor-de-mercado">Análisis de Correlación y Valor de
+                Mercado</a>
+              <ul>
+                <li><a href="#tabla-de-precios-promedio-por-tipo">Tabla de Precios Promedio por Tipo</a></li>
+              </ul>
+            </li>
+            <li><a href="#momentos-%C3%B3ptimos-de-inversi%C3%B3n">Momentos Óptimos de Inversión</a></li>
+          </ul>
+        </li>
+        <li><a href="#conclusiones-para-la-inversi%C3%B3n">Conclusiones para la Inversión</a>
+          <ul>
+            <li><a href="#puntos-fuertes">Puntos Fuertes</a></li>
+            <li><a href="#puntos-d%C3%A9biles">Puntos Débiles</a></li>
+            <li><a href="#recomendaciones">Recomendaciones</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#pylar-ai-creative-ml-scientific-and-commercial-license">Pylar AI Creative ML Scientific and Commercial
+        License</a>
+      <ul>
+        <li><a href="#permission">Permission</a>
+          <ul>
+            <li><a href="#conditions">Conditions</a></li>
+          </ul>
+        </li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+      </ul>
+    </li>
+  </ul>
+  <p>El análisis exhaustivo de los precios históricos y las tendencias de las cartas Pokémon de Misty's Tears,
+    específicamente los tipos Trainer y DK, ofrece perspectivas valiosas para potenciales inversionistas. Utilizando una
+    serie de visualizaciones gráficas, hemos identificado patrones clave, fluctuaciones estacionales y la volatilidad
+    del mercado para cada tipo de carta.</p>
+  <h2 id="preliminary-report-on-pokémon-cards-investment-mistys-tears-edition">Preliminary Report on Pokémon Cards
+    Investment: Misty's Tears Edition</h2>
+  <p>Este informe ampliado proporciona una guía comprensiva para la inversión en cartas de Misty's Tears, equilibrando
+    entre el análisis técnico y estratégico, para ayudar a los inversores a tomar decisiones basadas en datos sólidos y
+    perspectivas informadas.</p>
+  <h2 id="análisis-general">Análisis General</h2>
+  <p>En la gráfica de dispersión inicial <img src="file:///a:\015_produccion\pkmnreact\.studio\Graph.png"
+      alt="Graph.png">, observamos la variabilidad en los precios a lo largo del tiempo para ambos tipos de cartas. Esta
+    variación sugiere un mercado dinámico con influencias externas que afectan la demanda y la oferta. Además, se nota
+    una discrepancia en los rangos de precios entre los tipos Trainer y DK, indicando diferencias inherentes en valor.
+  </p>
+  <h2 id="evaluación-de-tendencias-temporales">Evaluación de Tendencias Temporales</h2>
+  <p>La visualización en 3D <img src="file:///a:\015_produccion\pkmnreact\.studio\3DGraph.png" alt="3DGraph.png"> ofrece
+    una perspectiva multidimensional, mostrando cómo el precio varía con el tiempo para cada tipo. Aquí, no solo se
+    confirma la variabilidad de precios, sino que también se destacan posibles patrones temporales y diferencias claras
+    entre los tipos de cartas.</p>
+  <h2 id="máximos-y-mínimos">Máximos y Mínimos</h2>
+  <p>Al analizar los máximos y mínimos rodantes <img src="file:///a:\015_produccion\pkmnreact\.studio\GraphMaxsMins.png"
+      alt="GraphMaxsMins.png">, identificamos la volatilidad en los precios de ambas categorías. Esta gráfica destaca la
+    existencia de períodos de alta y baja, proporcionando una visión de la estabilidad relativa del mercado para los
+    tipos Trainer y DK.</p>
+  <h2 id="fluctuaciones-estacionales">Fluctuaciones Estacionales</h2>
+  <p>El mapa de calor <img src="file:///a:\015_produccion\pkmnreact\.studio\GraphStationary.png"
+      alt="GraphStationary.png"> por meses revela las fluctuaciones estacionales de los precios. Esta visualización es
+    crucial para entender cómo los precios se ven afectados por las estaciones, lo que puede influir en las decisiones
+    de compra o venta en momentos específicos del año.</p>
+  <h3 id="análisis-de-correlación-y-valor-de-mercado">Análisis de Correlación y Valor de Mercado</h3>
+  <p>Al evaluar la correlación entre el tipo de carta y su valor de mercado, se observa una tendencia interesante. Los
+    tipos Trainer, aunque muestran menos volatilidad, presentan un crecimiento sostenido en su valor, lo que sugiere una
+    inversión segura a largo plazo. Por otro lado, las cartas DK, sujetas a mayores fluctuaciones, pueden ofrecer
+    retornos significativos a corto plazo, especialmente si se adquieren durante los mínimos de mercado y se venden en
+    los picos de precio.</p>
+  <h4 id="tabla-de-precios-promedio-por-tipo">Tabla de Precios Promedio por Tipo</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Precio Promedio ($)</th>
+        <th>Desviación Estándar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Trainer</td>
+        <td>380.25</td>
+        <td>45.10</td>
+      </tr>
+      <tr>
+        <td>DK</td>
+        <td>360.89</td>
+        <td>50.25</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>La tabla anterior muestra que las cartas Trainer no solo tienen un precio promedio más alto, sino que también su
+    desviación estándar es menor, indicando una inversión más estable comparada con las DK.</p>
+  <h3 id="momentos-óptimos-de-inversión">Momentos Óptimos de Inversión</h3>
+  <p>Basándonos en el análisis estacional y la volatilidad de precios, los mejores momentos para invertir en cartas
+    Trainer serían durante los mínimos estacionales, justo antes de un esperado aumento de precios. Para las cartas DK,
+    los momentos óptimos serían durante los puntos más bajos de volatilidad, aprovechando cualquier pico abrupto de
+    precios para vender.</p>
+  <h2 id="conclusiones-para-la-inversión">Conclusiones para la Inversión</h2>
+  <h3 id="puntos-fuertes">Puntos Fuertes</h3>
+  <ul>
+    <li><strong>Trainer</strong>: La demanda consistente y la apreciación de precios sugieren una inversión
+      relativamente segura a largo plazo.</li>
+    <li><strong>DK</strong>: Las fluctuaciones permiten oportunidades de compra a bajo precio para potenciales ventas a
+      alto valor.</li>
+  </ul>
+  <h3 id="puntos-débiles">Puntos Débiles</h3>
+  <ul>
+    <li><strong>Trainer</strong>: Menor volatilidad implica menos oportunidades para ganancias rápidas.</li>
+    <li><strong>DK</strong>: Mayor riesgo debido a la volatilidad y las fluctuaciones impredecibles.</li>
+  </ul>
+  <h3 id="recomendaciones">Recomendaciones</h3>
+  <p>Para inversores a largo plazo, las cartas Trainer ofrecen una apuesta más segura con una tendencia de apreciación
+    constante. Por otro lado, las cartas DK presentan oportunidades para inversores dispuestos a asumir mayores riesgos
+    con la posibilidad de obtener ganancias significativas a corto plazo.</p>
+  <p>Este análisis detalla las complejidades del mercado de cartas Pokémon, subrayando la importancia de una estrategia
+    de inversión bien considerada. Al evaluar los patrones históricos, las fluctuaciones estacionales, y la volatilidad
+    del mercado, los inversores pueden identificar momentos óptimos de compra y venta, maximizando así sus retornos y
+    minimizando los riesgos asociados.</p>
+  <p>La incorporación de un análisis de correlación y valores de mercado en nuestro informe refuerza la base de datos
+    para tomar decisiones informadas. La comprensión de la dinámica entre tipos de cartas y su comportamiento de precio
+    a lo largo del tiempo permite a los inversores adaptar sus estrategias a sus objetivos y tolerancia al riesgo.</p>
+  <p>En resumen, la inversión en cartas Pokémon, especialmente en ediciones raras como Misty's Tears, requiere una
+    comprensión profunda de las tendencias del mercado y un monitoreo constante de las condiciones cambiantes. Con un
+    enfoque estratégico y un análisis detallado, los inversores pueden aprovechar estas piezas de colección no solo como
+    un hobby, sino también como una inversión potencialmente lucrativa. Pero recuerda, la inversión siempre conlleva
+    riesgos, y es esencial realizar una investigación exhaustiva antes de tomar decisiones financieras significativas.
+    Nosotros no somos asesores financieros, y este informe es solo para fines informativos. ¡Buena suerte en tu viaje de
+    inversión en cartas Pokémon!</p>
+  <h1 id="pylar-ai-creative-ml-scientific-and-commercial-license">Pylar AI Creative ML Scientific and Commercial License
+  </h1>
+  <ul>
+    <li><a href="#pylar-ai-creative-ml-scientific-and-commercial-license">Pylar AI Creative ML Scientific and Commercial
+        License</a>
+      <ul>
+        <li><a href="#permission">Permission</a>
+          <ul>
+            <li><a href="#conditions">Conditions</a></li>
+          </ul>
+        </li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+      </ul>
+    </li>
+  </ul>
+  <blockquote>
+    <p>2024 ©, All Rights Reserved. Miguel Gargallo.</p>
+  </blockquote>
+  <h3 id="permission">Permission</h3>
+  <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+    documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without
+    limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+    Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+  <h4 id="conditions">Conditions</h4>
+  <ol>
+    <li>
+      <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions
+        of the Software.</p>
+    </li>
+    <li>
+      <p>Any work using, copying, modifying, merging, publishing, distributing, sublicensing, and/or selling copies of
+        the Software must explicitly acknowledge &quot;Miguel Gargallo&quot; as the original author of this work.
+        Failure to meet this condition will be considered a violation of this license.</p>
+    </li>
+    <li>
+      <p>The file in which this license is included (<a href="http://License.html">License.md</a>) must remain
+        unmodified. Any modifications to this file will be considered a violation of this license.</p>
+    </li>
+    <li>
+      <p>The Software may not be used to provide financial advisory services, whether directly or indirectly. Any such
+        use will be considered a violation of this license.</p>
+    </li>
+  </ol>
+  <hr>
+  <h3 id="disclaimer">Disclaimer</h3>
+  <p>The Software is provided &quot;as is&quot;, without warranty of any kind, express or implied, including but not
+    limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event
+    shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of
+    contract, tort or otherwise, arising from, out of or in connection with the Software or the use or other dealings in
+    the Software.</p>
+  <blockquote>
+    <p>For further details about this license, please visit: <a
+        href="https://huggingface.co/spaces/superdatas/scientific-commercial-license">https://huggingface.co/spaces/superdatas/scientific-commercial-license</a>
+    </p>
+  </blockquote>
+  <hr>
+  <p>Version: 03272024</p>
 
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
+  <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
 
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="informe-de-inversión-en-cartas-pokémon-mistys-tears---análisis-de-trainer-vs-dk">Informe de Inversión en Cartas Pokémon: Misty's Tears - Análisis de Trainer vs DK</h1>
-<h1 id="tabla-de-contenidos">Tabla de Contenidos</h1>
-<ul>
-<li><a href="#informe-de-inversi%C3%B3n-en-cartas-pok%C3%A9mon-mistys-tears---an%C3%A1lisis-de-trainer-vs-dk">Informe de Inversión en Cartas Pokémon: Misty's Tears - Análisis de Trainer vs DK</a></li>
-<li><a href="#tabla-de-contenidos">Tabla de Contenidos</a>
-<ul>
-<li><a href="#preliminary-report-on-pok%C3%A9mon-cards-investment-mistys-tears-edition">Preliminary Report on Pokémon Cards Investment: Misty's Tears Edition</a></li>
-<li><a href="#an%C3%A1lisis-general">Análisis General</a></li>
-<li><a href="#evaluaci%C3%B3n-de-tendencias-temporales">Evaluación de Tendencias Temporales</a></li>
-<li><a href="#m%C3%A1ximos-y-m%C3%ADnimos">Máximos y Mínimos</a></li>
-<li><a href="#fluctuaciones-estacionales">Fluctuaciones Estacionales</a>
-<ul>
-<li><a href="#an%C3%A1lisis-de-correlaci%C3%B3n-y-valor-de-mercado">Análisis de Correlación y Valor de Mercado</a>
-<ul>
-<li><a href="#tabla-de-precios-promedio-por-tipo">Tabla de Precios Promedio por Tipo</a></li>
-</ul>
-</li>
-<li><a href="#momentos-%C3%B3ptimos-de-inversi%C3%B3n">Momentos Óptimos de Inversión</a></li>
-</ul>
-</li>
-<li><a href="#conclusiones-para-la-inversi%C3%B3n">Conclusiones para la Inversión</a>
-<ul>
-<li><a href="#puntos-fuertes">Puntos Fuertes</a></li>
-<li><a href="#puntos-d%C3%A9biles">Puntos Débiles</a></li>
-<li><a href="#recomendaciones">Recomendaciones</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>El análisis exhaustivo de los precios históricos y las tendencias de las cartas Pokémon de Misty's Tears, específicamente los tipos Trainer y DK, ofrece perspectivas valiosas para potenciales inversionistas. Utilizando una serie de visualizaciones gráficas, hemos identificado patrones clave, fluctuaciones estacionales y la volatilidad del mercado para cada tipo de carta.</p>
-<h2 id="preliminary-report-on-pokémon-cards-investment-mistys-tears-edition">Preliminary Report on Pokémon Cards Investment: Misty's Tears Edition</h2>
-<p>Este informe ampliado proporciona una guía comprensiva para la inversión en cartas de Misty's Tears, equilibrando entre el análisis técnico y estratégico, para ayudar a los inversores a tomar decisiones basadas en datos sólidos y perspectivas informadas.</p>
-<h2 id="análisis-general">Análisis General</h2>
-<p>En la gráfica de dispersión inicial <img src="./Graph.png" alt="Graph.png">, observamos la variabilidad en los precios a lo largo del tiempo para ambos tipos de cartas. Esta variación sugiere un mercado dinámico con influencias externas que afectan la demanda y la oferta. Además, se nota una discrepancia en los rangos de precios entre los tipos Trainer y DK, indicando diferencias inherentes en valor.</p>
-<h2 id="evaluación-de-tendencias-temporales">Evaluación de Tendencias Temporales</h2>
-<p>La visualización en 3D <img src="./3DGraph.png" alt="3DGraph.png"> ofrece una perspectiva multidimensional, mostrando cómo el precio varía con el tiempo para cada tipo. Aquí, no solo se confirma la variabilidad de precios, sino que también se destacan posibles patrones temporales y diferencias claras entre los tipos de cartas.</p>
-<h2 id="máximos-y-mínimos">Máximos y Mínimos</h2>
-<p>Al analizar los máximos y mínimos rodantes <img src="./GraphMaxsMins.png" alt="GraphMaxsMins.png">, identificamos la volatilidad en los precios de ambas categorías. Esta gráfica destaca la existencia de períodos de alta y baja, proporcionando una visión de la estabilidad relativa del mercado para los tipos Trainer y DK.</p>
-<h2 id="fluctuaciones-estacionales">Fluctuaciones Estacionales</h2>
-<p>El mapa de calor <img src="./GraphStationary.png" alt="GraphStationary.png"> por meses revela las fluctuaciones estacionales de los precios. Esta visualización es crucial para entender cómo los precios se ven afectados por las estaciones, lo que puede influir en las decisiones de compra o venta en momentos específicos del año.</p>
-<h3 id="análisis-de-correlación-y-valor-de-mercado">Análisis de Correlación y Valor de Mercado</h3>
-<p>Al evaluar la correlación entre el tipo de carta y su valor de mercado, se observa una tendencia interesante. Los tipos Trainer, aunque muestran menos volatilidad, presentan un crecimiento sostenido en su valor, lo que sugiere una inversión segura a largo plazo. Por otro lado, las cartas DK, sujetas a mayores fluctuaciones, pueden ofrecer retornos significativos a corto plazo, especialmente si se adquieren durante los mínimos de mercado y se venden en los picos de precio.</p>
-<h4 id="tabla-de-precios-promedio-por-tipo">Tabla de Precios Promedio por Tipo</h4>
-<table>
-<thead>
-<tr>
-<th>Tipo</th>
-<th>Precio Promedio ($)</th>
-<th>Desviación Estándar</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Trainer</td>
-<td>380.25</td>
-<td>45.10</td>
-</tr>
-<tr>
-<td>DK</td>
-<td>360.89</td>
-<td>50.25</td>
-</tr>
-</tbody>
-</table>
-<p>La tabla anterior muestra que las cartas Trainer no solo tienen un precio promedio más alto, sino que también su desviación estándar es menor, indicando una inversión más estable comparada con las DK.</p>
-<h3 id="momentos-óptimos-de-inversión">Momentos Óptimos de Inversión</h3>
-<p>Basándonos en el análisis estacional y la volatilidad de precios, los mejores momentos para invertir en cartas Trainer serían durante los mínimos estacionales, justo antes de un esperado aumento de precios. Para las cartas DK, los momentos óptimos serían durante los puntos más bajos de volatilidad, aprovechando cualquier pico abrupto de precios para vender.</p>
-<h2 id="conclusiones-para-la-inversión">Conclusiones para la Inversión</h2>
-<h3 id="puntos-fuertes">Puntos Fuertes</h3>
-<ul>
-<li><strong>Trainer</strong>: La demanda consistente y la apreciación de precios sugieren una inversión relativamente segura a largo plazo.</li>
-<li><strong>DK</strong>: Las fluctuaciones permiten oportunidades de compra a bajo precio para potenciales ventas a alto valor.</li>
-</ul>
-<h3 id="puntos-débiles">Puntos Débiles</h3>
-<ul>
-<li><strong>Trainer</strong>: Menor volatilidad implica menos oportunidades para ganancias rápidas.</li>
-<li><strong>DK</strong>: Mayor riesgo debido a la volatilidad y las fluctuaciones impredecibles.</li>
-</ul>
-<h3 id="recomendaciones">Recomendaciones</h3>
-<p>Para inversores a largo plazo, las cartas Trainer ofrecen una apuesta más segura con una tendencia de apreciación constante. Por otro lado, las cartas DK presentan oportunidades para inversores dispuestos a asumir mayores riesgos con la posibilidad de obtener ganancias significativas a corto plazo.</p>
-<p>Este análisis detalla las complejidades del mercado de cartas Pokémon, subrayando la importancia de una estrategia de inversión bien considerada. Al evaluar los patrones históricos, las fluctuaciones estacionales, y la volatilidad del mercado, los inversores pueden identificar momentos óptimos de compra y venta, maximizando así sus retornos y minimizando los riesgos asociados.</p>
-<p>La incorporación de un análisis de correlación y valores de mercado en nuestro informe refuerza la base de datos para tomar decisiones informadas. La comprensión de la dinámica entre tipos de cartas y su comportamiento de precio a lo largo del tiempo permite a los inversores adaptar sus estrategias a sus objetivos y tolerancia al riesgo.</p>
-<p>En resumen, la inversión en cartas Pokémon, especialmente en ediciones raras como Misty's Tears, requiere una comprensión profunda de las tendencias del mercado y un monitoreo constante de las condiciones cambiantes. Con un enfoque estratégico y un análisis detallado, los inversores pueden aprovechar estas piezas de colección no solo como un hobby, sino también como una inversión potencialmente lucrativa.</p>
+</body>
 
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+</html>
